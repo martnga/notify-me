@@ -12,8 +12,8 @@
 
     <permission
         android:protectionLevel="signature"
-        android:name="com.nganga.talkie.ChatApp.permission.C2D_MESSAGE" />
-    <uses-permission android:name="com.nganga.talkie.ChatApp.permission.C2D_MESSAGE"/>
+        android:name="com.nganga.talkie.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.nganga.talkie.permission.C2D_MESSAGE"/>
 
 
     <application
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
 
-        //configure the parseService && receiver for devices without Google Cloud Messaging
+     <!--   configure the parseService && receiver for devices without Google Cloud Messaging-->
 
         <service android:name="com.parse.PushService"/>
         <receiver android:name="com.parse.ParseBroadcastReceiver">
@@ -42,13 +42,14 @@
             </intent-filter>
         </receiver>
 
-        //configure the parseService && receiver for devices with Google Cloud Messaging
+        <!--//configure the parseService && receiver for devices with Google Cloud Messaging-->
 
         <receiver android:name="com.parse.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+                <category android:name="com.nganga.talkie" />
             </intent-filter>
         </receiver>
     </application>
